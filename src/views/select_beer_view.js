@@ -9,8 +9,10 @@ SelectBeerView.prototype.bindEvents = function () {
     this.populateSelect(event.detail);
   });
 
-// add event listener for change and publish something
-
+  this.selectElement.addEventListener('change', (event) => {
+    const selectedBeerId = event.target.value;
+    PubSub.publish('SelectBeerView:change',selectedBeerId);
+  })
 };
 
 SelectBeerView.prototype.populateSelect = function (allBeers) {

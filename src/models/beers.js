@@ -6,17 +6,24 @@ const Beers = function () {
 }
 
 Beers.prototype.bindEvents = function () {
-  // PubSub.subscribe()
+  PubSub.subscribe('SelectBeerView:change', (event) => {
+    const selectedBeerIndex = event.detail;
+    this.publishBeerByIndex(selectedBeerIndex);
+  })
 };
 
 Beers.prototype.getData = function () {
-  console.log('been in getData');
-  const request = new Request('https://api.punkapi.com/v2/beers');
+  const request = new Request('https://api.punkapi.com/v2/beers?per_page=80');
   request.get().then(data => {
     this.beersData = data;
     PubSub.publish('Beers:all-beers-ready',this.beersData);
 
   })
+};
+
+Beers.prototype.publishBeerByIndex = function (index) {
+  const selectedBeer = this.beersData.filter(beer => {return beer.id == index});
+  PubSub.publish('Beers:selected-beer',selectedBeer[0])
 };
 
 module.exports = Beers;
