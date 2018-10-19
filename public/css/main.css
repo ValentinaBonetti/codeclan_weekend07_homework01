@@ -1,7 +1,59 @@
-img#selected-beer-image {
-  height: 300px;
+body {
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+    text-align: center;
+}
+
+label {
+    margin: 30px;
 }
 
 .brew-sheet-image {
   width: 30px;
+}
+
+#selected-beer-info {
+  padding: 10px;
+  border: double;
+  border-color: cadetblue;
+  margin: 20px;
+  justify-content: center;
+  text-align: center;
+
+}
+
+#selected-beer-grid-container {
+  /* display: inline-grid;  */
+  border-color: blue;
+  display: grid;
+  grid-template-rows: auto auto auto;
+  grid-template-columns: auto auto;
+  grid-column-gap:20px;
+  grid-row-gap:20px;
+  padding: 20px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+}
+
+#beer-name-and-description {
+  text-align: center;
+}
+
+img#selected-beer-image {
+  /* height: 350px; */
+  height: 100%;
+  grid-row-start: 1;
+  grid-row-end: 4;
+}
+
+#brewSheet {
+  justify-content: center;
+}
+
+table#brewTable {
+    margin: auto;
 }
