@@ -5,6 +5,8 @@ const FavouritesListView = function (container) {
   this.container = container;
 };
 
+
+
 FavouritesListView.prototype.bindEvents = function () {
   PubSub.subscribe('BeerInfoView:favouriteSelected', (event) => {
     this.renderFavouriteBeerViews(event.detail);
@@ -12,17 +14,15 @@ FavouritesListView.prototype.bindEvents = function () {
 };
 
 FavouritesListView.prototype.renderFavouriteBeerViews = function (beer) {
-  // munros.forEach((munro) => {
-  //   const munroItem = this.createMunroListItem(munro);
-  //   this.container.appendChild(munroItem);
-  // });
-  console.log(beer);
-};
+  const beerItem = this.createBeerItem(beer);
+  this.container.appendChild(beerItem);
+  }
 
-// MunroListView.prototype.createMunroListItem = function (munro) {
-//   const munroDetailView = new MunroDetailView();
-//   const munroDetail = munroDetailView.createMunroDetail(munro);
-//   return munroDetail;
-// };
+
+FavouritesListView.prototype.createBeerItem = function (beer) {
+  const favouriteBeerView = new FavouriteBeerView();
+  const beerView = favouriteBeerView.createBeerView(beer);
+  return beerView;
+};
 
 module.exports = FavouritesListView;

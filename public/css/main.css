@@ -55,3 +55,17 @@ img#selected-beer-image {
 table#brewTable {
     margin: auto;
 }
+
+#favourite-beers-container {
+  margin: 20px;
+  border: double;
+  border-color: orange;
+
+}
+
+.favourite-beer-image {
+  height: 100px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 10px;
+}
