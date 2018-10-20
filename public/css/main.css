@@ -21,7 +21,6 @@ label {
   margin: 20px;
   justify-content: center;
   text-align: center;
-
 }
 
 #selected-beer-grid-container {
@@ -36,7 +35,6 @@ label {
   justify-content: center;
   align-items: center;
   text-align: center;
-
 }
 
 #beer-name-and-description {

@@ -7,17 +7,17 @@ const BeerInfoView = function (container) {
 BeerInfoView.prototype.bindEvents = function () {
   PubSub.subscribe('Beers:selected-beer', (event) => {
     const beer = event.detail;
-    this.render(beer);
-    this.favouriteButton(beer);
+    this.renderBeerInfo(beer);
+    this.setFavouriteButton(beer);
   })
 };
 
-BeerInfoView.prototype.render = function (beer) {
+BeerInfoView.prototype.renderBeerInfo = function (beer) {
   this.container.innerHTML = '';
-
+  //
   const gridContainer = document.createElement('div');
   gridContainer.id = "selected-beer-grid-container";
-
+  //
   // beer name and description
   const beerNameAndDescription = document.createElement('div');
   beerNameAndDescription.id = "beer-name-and-description";
@@ -30,13 +30,13 @@ BeerInfoView.prototype.render = function (beer) {
   beerNameAndDescription.appendChild(beerName);
   beerNameAndDescription.appendChild(paragraph);
   gridContainer.appendChild(beerNameAndDescription);
-
+  //
   // beer image
   const img = document.createElement('img');
   img.src = beer.image_url;
   img.id = "selected-beer-image";
   gridContainer.appendChild(img);
-
+  //
   // brewSheet table
   const brewSheet = document.createElement('div');
   brewSheet.textContent = "BREW SHEET";
@@ -58,14 +58,22 @@ BeerInfoView.prototype.render = function (beer) {
   td1_2.textContent = `ABV: ${beer.abv} %`;
   tr1.appendChild(td1_2);
   gridContainer.appendChild(brewSheet);
-
+  //
   this.container.appendChild(gridContainer)
 };
 
-BeerInfoView.prototype.favouriteButton = function (beer) {
+BeerInfoView.prototype.setFavouriteButton = function (beer) {
   const putInFavouritesButton = document.createElement('button');
   putInFavouritesButton.textContent = "set as favourite";
   this.container.appendChild(putInFavouritesButton);
+  // set addEventListener for the button click and publish something
+  // ...from here or where?
+  putInFavouritesButton.addEventListener('click', () => {
+    PubSub.publish('BeerInfoView:favouriteSelected',beer);
+  })
+
+
+
 };
 
 module.exports = BeerInfoView;

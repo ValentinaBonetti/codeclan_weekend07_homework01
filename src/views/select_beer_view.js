@@ -16,17 +16,16 @@ SelectBeerView.prototype.bindEvents = function () {
 };
 
 SelectBeerView.prototype.populateSelect = function (allBeers) {
-  allBeers.forEach((beer,index) => {
-    const option = this.createBeerOption(beer,index);
+  allBeers.forEach((beer) => {
+    const option = this.createBeerOption(beer);
     this.selectElement.appendChild(option);
   })
 };
 
-SelectBeerView.prototype.createBeerOption = function (beer,index) {
+SelectBeerView.prototype.createBeerOption = function (beer) {
   const option = document.createElement('option');
   option.textContent = beer.name;
-  option.value = beer.id; // check if more convenient to pass array index;
-                          // if not, delete it from arguments.
+  option.value = beer.id; 
   return option;
 };
 
