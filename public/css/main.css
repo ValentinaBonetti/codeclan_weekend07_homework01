@@ -1,5 +1,19 @@
 body {
   font-family: Arial, sans-serif;
+  position: relative;
+}
+
+body::after {
+  content: "";
+  background-image: url("http://spiritedmatters.com/wp-content/uploads/2015/04/efp4.jpg");
+  opacity: 0.1;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-size: cover;
+  position: absolute;
+  z-index: -1;
 }
 
 h1 {
@@ -15,13 +29,32 @@ label {
 }
 
 #selected-beer-info {
+  height: 400px;
   padding: 10px;
   border: double;
   border-color: cadetblue;
   margin: 20px;
   justify-content: center;
   text-align: center;
+  position: relative;
 }
+
+#selected-beer-info::after {
+  content: "";
+  /* background-image: url('http://thembsgroup.co.uk/wp-content/uploads/2017/10/brewdog.jpg'); */
+  opacity: 0.10;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-size: cover;
+  position: absolute;
+  z-index: -1;
+}
+
+
+
+
 
 #selected-beer-grid-container {
   /* display: inline-grid;  */
@@ -58,9 +91,23 @@ table#brewTable {
 
 #favourite-beers-container {
   margin: 20px;
+  height: 200px;
   border: double;
   border-color: orange;
+  position: relative;
+}
 
+#favourite-beers-container::after {
+  content: "";
+  background-image: url('https://www.insidermedia.com/uploads/news/brewdog.jpg');
+  opacity: 0.25;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-size: cover;
+  position: absolute;
+  z-index: -1;
 }
 
 .favourite-beer-image {
