@@ -10,6 +10,11 @@ BeerInfoView.prototype.bindEvents = function () {
     this.renderBeerInfo(beer);
     this.setFavouriteButton(beer);
   })
+  PubSub.subscribe('FavouriteBeerView:viewBeerInfoRequested', (event) => {
+    const beer = event.detail;
+    this.renderBeerInfo(beer);
+    this.setDeleteButton(beer);
+  })
 };
 
 BeerInfoView.prototype.renderBeerInfo = function (beer) {
@@ -64,16 +69,25 @@ BeerInfoView.prototype.renderBeerInfo = function (beer) {
 
 BeerInfoView.prototype.setFavouriteButton = function (beer) {
   const putInFavouritesButton = document.createElement('button');
-  putInFavouritesButton.textContent = "set as favourite";
+  putInFavouritesButton.textContent = "put in favourites";
   this.container.appendChild(putInFavouritesButton);
   // set addEventListener for the button click and publish something
   // ...from here or where?
   putInFavouritesButton.addEventListener('click', () => {
     PubSub.publish('BeerInfoView:favouriteSelected',beer);
   })
+};
 
-
-
+BeerInfoView.prototype.setDeleteButton = function (beer) {
+  const deleteFromFavouritesButton = document.createElement('button');
+  deleteFromFavouritesButton.textContent = "delete from favourites";
+  this.container.appendChild(deleteFromFavouritesButton);
+  // set addEventListener for the button click and publish something
+  // ...from here or where?
+  deleteFromFavouritesButton.addEventListener('click', () => {
+    const beerToBeDeleted = document.querySelector(`#image-beerid-${beer.id}`);
+    beerToBeDeleted.remove();
+  })
 };
 
 module.exports = BeerInfoView;
