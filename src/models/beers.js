@@ -9,7 +9,14 @@ Beers.prototype.bindEvents = function () {
   PubSub.subscribe('SelectBeerView:change', (event) => {
     const selectedBeerIndex = event.detail;
     this.publishBeerByIndex(selectedBeerIndex);
+  });
+  PubSub.subscribe('SelectFoodView:change', (event) => {
+    const selectedFood = event.detail;
+    const selectedBeerIndex = this.beersData.filter(beer => {return beer.food_pairing.includes(selectedFood)}).map(beer => beer.id);
+    this.publishBeerByIndex(selectedBeerIndex);
   })
+
+  // json.filter(beer => {return beer.food_pairing.includes("Tomato and rosemary palmiers")}).map(beer => beer.name)
 };
 
 Beers.prototype.getData = function () {
