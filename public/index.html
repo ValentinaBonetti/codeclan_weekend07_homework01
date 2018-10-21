@@ -10,10 +10,18 @@
 </head>
 <body>
   <h1> PUNK IPA.API </h1>
-    <label for="beer-select">select your beer:</label>
-    <select id="beer-select">
-      <option selected disabled></option>
-    </select>
+    <div id="beer-by-name-selector">
+      <label for="beer-select">select your beer by name:</label>
+      <select id="beer-select">
+        <option selected disabled></option>
+      </select>
+    </div>
+    <div id="beer-by-food-selector">
+      <label for="food-select">select your favourite food instead:</label>
+      <select id="food-select">
+        <option selected disabled></option>
+      </select>
+    </div>
     <div id="selected-beer-info"></div>
     <div id="favourite-beers-container"></div>
 </body>
