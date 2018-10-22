@@ -10,6 +10,7 @@ SelectBeerView.prototype.bindEvents = function () {
   });
 
   this.selectElement.addEventListener('change', (event) => {
+    event.preventDefault();
     const selectedBeerId = event.target.value;
     PubSub.publish('SelectBeerView:change',selectedBeerId);
   })
@@ -25,7 +26,7 @@ SelectBeerView.prototype.populateSelect = function (allBeers) {
 SelectBeerView.prototype.createBeerOption = function (beer) {
   const option = document.createElement('option');
   option.textContent = beer.name;
-  option.value = beer.id; 
+  option.value = beer.id;
   return option;
 };
 
