@@ -52,10 +52,6 @@ label {
   z-index: -1;
 }
 
-
-
-
-
 #selected-beer-grid-container {
   /* display: inline-grid;  */
   border-color: blue;
